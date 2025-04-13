@@ -1,0 +1,238 @@
+html,
+body,
+#root {
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    background: #141625;
+    overflow-x: hidden;
+}
+
+#star-background {
+    pointer-events: none;
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.detail-img-starfield {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: transparent;
+    opacity: 0.5;
+}
+
+@keyframes star-fade {
+    0% {
+        opacity: 0;
+        filter: blur(6px);
+    }
+
+    40% {
+        opacity: 1;
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.detail-img-sw {
+    display: block;
+    max-width: 340px;
+    max-height: 340px;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 24px #37f7fc77;
+    object-fit: contain;
+    background: #202225;
+}
+
+.detail-img-spinner {
+    position: absolute;
+    z-index: 3;
+    left: 48%;
+    top: 35%;
+}
+
+.detail-box, .detail-box ul, .detail-box li {
+    word-break: break-all;
+    white-space: pre-line;
+}
+
+.detail-box {
+    background: rgba(25, 25, 30, 0.85);
+    border-radius: 1.1em;
+    padding: 1.2em;
+    box-shadow: 0 0 32px 12px #000a;
+    display: inline-block;
+    color: azure;
+    width: fit-content;
+    max-width: 400px;
+}
+
+.container-center {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar-space {
+    background: rgba(25, 25, 40, 0.96);
+    border-radius: 50px;
+    border: none;
+    padding: 0.62em 1.4em;
+    color: #ffe81f;
+    box-shadow: 0 0 24px 2px #88ffe9a0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.search-bar-space:focus {
+    border: 2px solid #ffe81f;
+    box-shadow: 0 0 44px 6px #ffe81faa;
+}
+
+.footer-sable {
+    width: 100vw;
+    min-height: 90px;
+    background: #181b26;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+}
+
+/* NUEVO: LOS ELEMENTOS VAN EN FILA */
+.sable-lightsaber-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.sable-mango {
+    width: 54px;
+    height: 24px;
+    border-radius: 10px 12px 13px 6px;
+    background: linear-gradient(#666 60%, #232323 100%);
+    border: 2.7px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 4;
+    box-shadow: 1px 2px 8px #191919, inset 3px 0 7px #222;
+    margin-right: 0;
+    /* Sin margen con la hoja */
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+.sable-boton {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    cursor: pointer;
+    transition: border-color .3s, box-shadow .3s;
+    z-index: 5;
+    border: 2px solid #fff;
+    margin-left: 2px;
+}
+
+.sable-hoja {
+    height: 10px;
+    width: 280px;
+    border-radius: 0 12px 12px 0;
+    background: linear-gradient(90deg, white 15%, #ffe81f 80%);
+    margin-left: 0;
+    transition: box-shadow .4s, background .4s;
+    animation: hojaOn .9s cubic-bezier(.65, 0, .35, 1) forwards;
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+@keyframes hojaOn {
+    from {
+        transform: scaleX(0);
+        opacity: .3;
+    }
+
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.sable-text {
+    color: #ffe81f;
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: 1.16em;
+    text-shadow: 0 2px 14px #ffe81f88, 0 0px 32px #fff6, 0 -2px 17px #00f4ff41;
+    margin-top: 11px;
+    letter-spacing: 1.2px;
+}
+
+/* Responsive */
+@media (max-width: 530px) {
+    .sable-hoja {
+        width: 110px;
+    }
+
+    .sable-mango {
+        width: 40px;
+        height: 18px;
+    }
+}
+
+
+
+.sw-btn {
+    background: linear-gradient(90deg, #ffe81f 60%, #fff385 100%);
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 14px 2px #ffe81f77;
+    padding: 0.4em 1.3em 0.4em 1em;
+    font-family: 'Orbitron', 'Arial Black', Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    font-size: 1.08em;
+    display: inline-flex;
+    /* notar esto! */
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.17s, transform .13s;
+}
+
+.sw-btn:hover,
+.navbar-brand {
+    box-shadow: 0 0 34px 6px #ffe81fcc;
+    transform: scale(1.05);
+}
