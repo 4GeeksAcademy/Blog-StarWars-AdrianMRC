@@ -1,29 +1,24 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 
-export default function StarBackground({ starCount = 120 }) {
+const generateStars = (starCount) => {
+  let content = '';
+  for (let i = 0; i < starCount; i++) {
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const r = Math.random() * 1.6 + 0.3;
+    const alpha = Math.random() * 0.7 + 0.2;
+    content += `<circle cx="${x}vw" cy="${y}vh" r="${r}" fill="white" opacity="${alpha}"/>`;
+  }
+  return content;
+};
+
+export default function StarBackground({ starCount = 150 }) {
   const svgRef = useRef();
+  const stars = useMemo(() => generateStars(starCount), [starCount]);
 
   useEffect(() => {
-    // Genera estrellas sólo una vez
-    const svg = svgRef.current;
-    let content = '';
-    for (let i = 0; i < starCount; i++) {
-      const x = Math.random() * 100;
-      const y = Math.random() * 100;
-      const r = Math.random() * 1.6 + 0.3; // radios variados
-      const alpha = Math.random() * 0.7 + 0.2;
-      content += `<circle cx="${x}vw" cy="${y}vh" r="${r}" fill="white" opacity="${alpha}"/>`;
-    }
-    svg.innerHTML = content;
-  }, [starCount]);
+    svgRef.current.innerHTML = stars;
+  }, [stars]);
 
-  return (
-    <svg
-      id="star-background"
-      ref={svgRef}
-      width="100vw"
-      height="100vh"
-      style={{ position: 'fixed', top: 0, left: 0 }}
-    />
-  );
+  return <svg id="star-background" ref={svgRef} aria-hidden="true" />;
 }

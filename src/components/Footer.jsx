@@ -1,16 +1,32 @@
 import React, { useState } from "react";
 
+// Lista de colores para el sable de luz, cada uno con su color principal y sombra
 const saberColors = [
-  { color: "#1cfffc", shadow: "#00f0ff" },   // Azul
-  { color: "#ffe81f", shadow: "#ffe81f" },   // Amarillo
-  { color: "#f34f4f", shadow: "#ff2222" },   // Rojo
-  { color: "#4ff362", shadow: "#56ff6c" },   // Verde
-  { color: "#b97aff", shadow: "#a26cff" },   // Morado
+  { color: "#1cfffc", shadow: "#00f0ff" },
+  { color: "#ffe81f", shadow: "#ffe81f" },
+  { color: "#f34f4f", shadow: "#ff2222" },
+  { color: "#4ff362", shadow: "#56ff6c" },
+  { color: "#b97aff", shadow: "#a26cff" },
+];
+
+const messages = [
+  "Que la Fuerza te acompañe", 
+  "El equilibrio está en tus manos", 
+  "El lado oscuro es poderoso", 
+  "La esperanza nunca muere", 
+  "El poder de la sabiduría", 
 ];
 
 export default function FooterSable() {
-  const [idx, setIdx] = useState(0);
-  const handleClick = () => setIdx((idx + 1) % saberColors.length);
+  const [idx, setIdx] = useState(0); // Estado para rastrear el color activo del sable
+  const [animate, setAnimate] = useState(false);
+
+  const handleClick = () => {
+    setAnimate(false); // Reinicia la animación
+    setTimeout(() => setAnimate(true), 10); 
+    setIdx((idx + 1) % saberColors.length);
+  };
+
   const activeColor = saberColors[idx];
 
   return (
@@ -22,21 +38,21 @@ export default function FooterSable() {
             aria-label="Cambiar color del sable"
             onClick={handleClick}
             style={{
-              boxShadow: `0 0 6px 2px ${activeColor.shadow}66`,
-              border: `2px solid ${activeColor.color}`,
+              "--sable-color": activeColor.color,
+              "--sable-shadow": activeColor.shadow,
             }}
           />
         </div>
         <div
-          className="sable-hoja"
+          className={`sable-hoja ${animate ? "animate-hojaOn" : ""}`}
           style={{
-            background: `linear-gradient(90deg, white 20%, ${activeColor.color} 80%)`,
-            boxShadow: `0 0 22px 8px ${activeColor.shadow}, 0 0 90px 25px ${activeColor.shadow}66`,
+            "--sable-color": activeColor.color,
+            "--sable-shadow": activeColor.shadow,
           }}
         />
       </div>
       <div className="sable-text">
-        Que la Fuerza te acompañe
+        {messages[idx]}
       </div>
     </footer>
   );

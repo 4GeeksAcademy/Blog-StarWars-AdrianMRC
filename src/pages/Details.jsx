@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import useGlobalReducer from '../hooks/useGlobalReducer';
-import { getImageUrl, getApiUrl, getDetailsURL } from '../hooks/helpers'; // Asegúrate de la ruta correcta
+import { getImageUrl, getApiUrl, getDetailsURL } from '../hooks/helpers';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import DetailImage from '../components/DetailImage';
 
@@ -22,7 +22,7 @@ const Details = () => {
     const item = items[idx];
 
     if (!item) {
-        return <div className="container mt-5 text-center"><h2>Cargando...</h2></div>;
+        return <div className="container mt-5 text-center"><h2>No se encontró el ítem solicitado.</h2></div>;
     }
 
     const next = idx < items.length - 1 ? items[idx + 1] : null;

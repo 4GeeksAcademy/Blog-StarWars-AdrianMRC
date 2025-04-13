@@ -1,12 +1,15 @@
+const typeMap = {
+    people: 'characters',
+    planets: 'planets',
+    vehicles: 'vehicles',
+};
 /**
  * Extrae el tipo de entidad SWAPI en formato UI (characters, planets, vehicles) desde una URL SWAPI.
  * Usado en: NavbarFavoritos.jsx, ItemCard.jsx (cuando quieres saber a qué tipo corresponde un URL de favorito).
  */
 export function extractType(url) {
-    if (url.includes('people')) return 'characters';
-    if (url.includes('planets')) return 'planets';
-    if (url.includes('vehicles')) return 'vehicles';
-    return '';
+    const key = Object.keys(typeMap).find(type => url.includes(type));
+    return key ? typeMap[key] : '';
 }
 
 /**
@@ -14,10 +17,8 @@ export function extractType(url) {
  * Usado para: lógica interna, lookups, al leer favoritos del store/localStorage.
  */
 export function getType(url) {
-    if (url.includes('people')) return 'people';
-    if (url.includes('planets')) return 'planets';
-    if (url.includes('vehicles')) return 'vehicles';
-    return '';
+    const types = ['people', 'planets', 'vehicles'];
+    return types.find(type => url.includes(type)) || '';
 }
 
 /**
@@ -59,14 +60,10 @@ export function getDetailsURL(category, uid) {
  * Usado en: NavbarFavoritos.jsx para mostrar links correctos desde un URL.
  */
 export function parseFavUrl(url) {
-    let type = '';
-    if (url.includes('people')) type = 'characters';
-    else if (url.includes('planets')) type = 'planets';
-    else if (url.includes('vehicles')) type = 'vehicles';
-    const uid = url.split('/').filter(Boolean).pop();
+    const type = extractType(url); // Reutiliza `extractType`
+    const uid = getIdFromUrl(url); // Reutiliza `getIdFromUrl`
     return { type, uid };
 }
-
 /**
  * Obtiene datos desde localStorage en parseado seguro.
  * Usado en: store.js, para el estado inicial.

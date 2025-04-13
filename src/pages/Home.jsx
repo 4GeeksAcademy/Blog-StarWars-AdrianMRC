@@ -4,7 +4,7 @@ import { useAllCategoryItems } from '../hooks/useAllCategoryItems';
 import useGlobalReducer from '../hooks/useGlobalReducer';
 import { ACTIONS } from '../store';
 import ItemCard from '../components/ItemCard';
-import { getApiUrl, getDetailsURL, getImageUrl } from '../hooks/helpers'; // Ajusta la ruta según tu estructura
+import { getType, getApiUrl, getDetailsURL, getImageUrl } from '../hooks/helpers'; // Ajusta la ruta según tu estructura
 
 const TABS = [
   { key: 'people', label: 'Personajes' },
@@ -27,7 +27,7 @@ const Home = () => {
     currentPage * itemsPerPage
   );
 
-  // Abstracción de favorito para SOLID y DRY
+  // Maneja el evento de agregar o quitar de favoritos
   const handleFav = (item) => {
     const favItem = {
       uid: item.uid,
@@ -37,7 +37,7 @@ const Home = () => {
     dispatch({ type: ACTIONS.TOGGLE_FAVORITE, payload: favItem });
   };
 
-  // Reset page cuando cambias tab
+  // Cambia de tab y reinicia la página actual
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setCurrentPage(1);
@@ -53,15 +53,16 @@ const Home = () => {
 
   return (
     <Container>
-      {/* Tabs */}
+      {/* Tabs para cambiar entre categorías */}
       <ul className="nav nav-tabs mb-3">
         {TABS.map(({ key, label }) => (
           <li key={key} className="nav-item">
             <button
               className={`nav-link ${activeTab === key ? 'active' : ''}`}
               onClick={() => handleTabChange(key)}
+              aria-label={`Cambiar a la categoría ${label}`}
             >
-              {label}
+              {label} ({store.favorites.filter(f => getType(f.url) === key).length})
             </button>
           </li>
         ))}

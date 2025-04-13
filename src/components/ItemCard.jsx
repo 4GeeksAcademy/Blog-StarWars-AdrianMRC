@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 function ItemCard({ name, imageUrl, detailsUrl, isFavorite, onToggleFavorite, placeholderImg }) {
   return (
     <div className="card h-100">
-      <Link to={detailsUrl} style={{ textDecoration: 'none', color: 'inherit' }}>
+      {/* Enlace al detalle del elemento */}
+      <Link to={detailsUrl} className="item-card-link">
         <img
           src={imageUrl}
           className="card-img-top"
@@ -18,6 +19,7 @@ function ItemCard({ name, imageUrl, detailsUrl, isFavorite, onToggleFavorite, pl
         <button
           className={`btn ${isFavorite ? 'btn-danger' : 'btn-outline-warning'}`}
           onClick={onToggleFavorite}
+          aria-label={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
         >
           {isFavorite ? 'Quitar' : 'Favorito'}
         </button>

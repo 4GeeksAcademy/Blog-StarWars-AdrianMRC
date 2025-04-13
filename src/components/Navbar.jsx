@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { parseFavUrl } from '../hooks/helpers/'; // ajusta la ruta
+import { parseFavUrl } from '../hooks/helpers/';
 import SearchBar from './SearchBar';
 import starwarsLogo from "../assets/img/starwars-logo.png";
 import saber from "../assets/img/saber.svg";
@@ -10,13 +10,12 @@ export const NavbarFavoritos = ({ favorites, onRemoveFavorite }) => (
       <img
         src={starwarsLogo}
         alt="Star Wars logo"
-        style={{ height: 38 }}
       />
     </Link>
     <SearchBar />
     <div className="dropdown ms-auto">
       <button className="sw-btn" data-bs-toggle="dropdown">
-      <img src={saber} alt="" style={{ width: 34, marginRight:8, verticalAlign: "middle" }} />
+      <img src={saber} alt="" />
         Favoritos ({favorites.length})
       </button>
       <ul className="dropdown-menu dropdown-menu-end">

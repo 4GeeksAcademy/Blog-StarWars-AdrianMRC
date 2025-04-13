@@ -17,11 +17,12 @@ export default function SearchBar() {
   const navigate = useNavigate();
   const inputRef = useRef(null);
 
-  // Buscar en las tres categorías, normalizando nombres
+  // Buscar en las tres categorías, maneja los cambios en el input de búsqueda
   const handleChange = (e) => {
     const q = e.target.value;
     setQuery(q);
 
+    // Si la consulta tiene menos de 2 caracteres, limpia los resultados
     if (q.length < 2) {
       setResults([]);
       return;
@@ -29,22 +30,22 @@ export default function SearchBar() {
 
     let suggestions = [];
     CATEGORIES.forEach(({ key, label }) => {
-      const arr = store[key];
+      const arr = store[key]; // Obtiene los datos de la categoría
       if (!arr) return;
       arr.forEach((item) => {
-        const name = item.properties?.name ?? item.name;
+        const name = item.properties?.name ?? item.name; // Normaliza el nombre
         if (name && name.toLowerCase().includes(q.toLowerCase())) {
           suggestions.push({ name, uid: item.uid, category: key, label });
         }
       });
     });
 
-    // OJO: Solo 10 resultados máximo para UX
+    // Limita los resultados a un máximo de 10
     setResults(suggestions.slice(0, 10));
     setActiveIdx(-1);
   };
 
-  // Navega a detailsURL
+  // Maneja la selección de un resultado
   const handleSelect = (result) => {
     setQuery("");
     setResults([]);
@@ -52,7 +53,7 @@ export default function SearchBar() {
     setActiveIdx(-1);
   };
 
-  // Teclado (flechas y enter)
+  // Maneja las teclas de navegación (flechas y Enter)
   const handleKeyDown = (e) => {
     if (results.length === 0) return;
     if (e.key === "ArrowDown") {
@@ -64,13 +65,14 @@ export default function SearchBar() {
     }
   };
 
-  // Cierra sugerencias al blur
+  // Limpia los resultados al perder el foco
   const handleBlur = (e) => {
     setTimeout(() => setResults([]), 100);
   };
 
   return (
     <div className="position-relative" style={{ maxWidth: 350, margin: "0 auto" }}>
+      {/* Input de búsqueda */}
       <input
         type="search"
         value={query}
@@ -90,7 +92,6 @@ export default function SearchBar() {
               className={`list-group-item list-group-item-action ${i === activeIdx ? "active" : ""}`}
               style={{ cursor: "pointer" }}
               onMouseDown={() => handleSelect(res)}
-              // mouseDown para evitar perder foco antes de navegar
             >
               <span className="fw-bold">{res.name}</span>
               <span className="text-muted small ms-2">{res.label}</span>
