@@ -14,12 +14,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-/* pestañas entre grupos
-lista de busqueda
-retocar favoritos
- */

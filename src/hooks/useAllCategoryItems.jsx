@@ -1,8 +1,7 @@
 import useGlobalReducer from './useGlobalReducer';
 
 /**
- * Fetcher universal para obtener TODO el contenido expandido de una categoría de SWAPI.
- * Usado en: Layout.jsx al iniciar la app.
+ * Se utiliza para obtenerlos desde la API y almacenarlos en el localStorage para futuras consultas
  * Esta función NO es un hook.
  */
 export async function fetchAllExpanded(category) {
@@ -14,7 +13,7 @@ export async function fetchAllExpanded(category) {
   const pageSize = 100;
   let all = [];
   let keepPaging = true;
-  const maxPages = 50; // Límite máximo de páginas para evitar bucles infinitos
+  const maxPages = 50;
 
   try {
     while (keepPaging && page <= maxPages) {
@@ -36,7 +35,7 @@ export async function fetchAllExpanded(category) {
     }
   } catch (error) {
     console.error("Error en fetchAllExpanded:", error);
-    throw error; // Re-lanza el error para que el llamador lo maneje
+    throw error;
   }
 
   return all;
@@ -44,7 +43,6 @@ export async function fetchAllExpanded(category) {
 
 /**
  * Hook React para acceder a la lista de items de la categoría global, y su estado de carga.
- * Usado en: Home.jsx, Details.jsx, cualquier lista de entidades del store.
  */
 export function useAllCategoryItems(category) {
   if (!category) {
@@ -53,7 +51,7 @@ export function useAllCategoryItems(category) {
 
   const { store } = useGlobalReducer();
   const items = store[category] || [];
-  const loading = items.length === 0; // Considera agregar un estado explícito de carga en el store
+  const loading = items.length === 0;
 
   return { items, loading };
 }

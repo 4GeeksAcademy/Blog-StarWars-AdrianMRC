@@ -14,7 +14,7 @@ const itemsPerPage = 9;
 
 const Home = () => {
   const { store, dispatch } = useGlobalReducer();
-  const { onTrigger } = useOutletContext(); // Obtiene la función onTrigger desde Layout
+  const { onTrigger } = useOutletContext(); 
   const [activeTab, setActiveTab] = useState('people');
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -27,13 +27,13 @@ const Home = () => {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-    setCurrentPage(1); // Reinicia la paginación al cambiar de tab
+    setCurrentPage(1); 
     onTrigger(); // Notifica al Layout que debe actualizar el trigger
   };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    onTrigger(); // Notifica al Layout que debe actualizar el trigger
+    onTrigger(); 
   };
 
   const handleFav = (item) => {

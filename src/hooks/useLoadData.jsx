@@ -14,7 +14,8 @@ export const useLoadData = (store, dispatch) => {
           { key: "planets", swapi: "planets", action: ACTIONS.SET_PLANETS },
           { key: "vehicles", swapi: "vehicles", action: ACTIONS.SET_VEHICLES },
         ];
-
+        // Verifica si los datos ya están en el store o en el localStorage, 
+        // usa los datos del localStorage si están disponibles
         for (const cat of categories) {
           if (!store[cat.key]?.length) {
             const localData = localStorage.getItem(cat.key);

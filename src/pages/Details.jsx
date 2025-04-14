@@ -6,7 +6,6 @@ import DetailImage from '../components/DetailImage';
 
 /**
  * Muestra el detalle de un ítem (persona, planeta o vehículo) de SW.
- * Usado en: Ruta /details/:type/:uid
  */
 const Details = () => {
     const { type, uid } = useParams();

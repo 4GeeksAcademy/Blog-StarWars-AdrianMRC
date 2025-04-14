@@ -23,7 +23,7 @@ export const Layout = () => {
   };
 
   const handleTrigger = () => {
-    setTrigger((prev) => prev + 1); // Incrementa el trigger manualmente
+    setTrigger((prev) => prev + 1);
   };
 
   if (loading) {

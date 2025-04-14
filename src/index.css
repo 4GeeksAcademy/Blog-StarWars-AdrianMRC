@@ -6,11 +6,13 @@ body,
     margin: 0;
     padding: 0;
 }
-
+.pageError{
+    color: #ffe81f ;
+}
 .nav-tabs .nav-link.active {
-    color: #ffe81f ; /* Texto amarillo */
-    background: transparent ; /* Fondo transparente */
-    border: none ; /* Sin bordes */
+    color: #ffe81f ;
+    background: transparent ; 
+    border: none ; 
     font-family: 'Orbitron', sans-serif;
     font-size: 1rem;
 }
@@ -28,23 +30,23 @@ body {
 
 /* paginacion */
 .pagination .page-link {
-    color: #ffe81f; /* Letras en amarillo */
-    background: transparent; /* Fondo transparente */
-    border: none; /* Sin bordes */
+    color: #ffe81f; 
+    background: transparent;
+    border: none;
     font-family: 'Orbitron', sans-serif;
     font-size: 1rem;
     transition: color 0.2s, background 0.2s;
 }
 
 .pagination .page-link:hover {
-    background: rgba(255, 232, 31, 0.1); /* Fondo al pasar el cursor */
-    color: #ffe81f; /* Mantiene el color amarillo */
+    background: rgba(255, 232, 31, 0.1); 
+    color: #ffe81f; 
 }
 
 .pagination .page-item.active .page-link {
-    background: rgba(255, 232, 31, 0.2); /* Fondo para la página activa */
-    color: #ffe81f; /* Letras en amarillo */
-    border: none; /* Sin bordes */
+    background: rgba(255, 232, 31, 0.2); 
+    color: #ffe81f; 
+    border: none;
 }
 
 .card {
@@ -54,9 +56,7 @@ body {
     box-shadow: 0 0 32px 12px #000a;
     color: azure;
     width: 70%;
-    /* Asegura que la tarjeta ocupe todo el ancho de la columna */
     max-width: 100%;
-    /* Elimina cualquier límite de ancho */
     word-break: break-word;
     white-space: pre-line;
     z-index: 9;
@@ -188,17 +188,17 @@ body {
 }
 
 .search-bar-dropdown {
-    position: absolute; /* Posiciona el dropdown fuera del flujo normal */
-    top: 100%; /* Coloca el dropdown justo debajo del input */
-    left: 0; /* Alinea el dropdown con el lado izquierdo del input */
-    z-index: 1050; /* Asegura que el dropdown esté por encima de otros elementos */
+    position: absolute; 
+    top: 100%; /* dropdown justo debajo */
+    left: 0; /* Alinea con el lado izquierdo */
+    z-index: 1050; 
     max-height: 300px;
     overflow-y: auto;
-    background: rgba(25, 25, 30, 0.85); /* Fondo uniforme */
-    border-radius: 1.1em; /* Bordes redondeados */
-    padding: 0; /* Elimina el padding interno */
-    border: none; /* Sin bordes */
-    width: 100%; /* Asegura que el dropdown tenga el mismo ancho que el input */
+    background: rgba(25, 25, 30, 0.85);
+    border-radius: 1.1em; 
+    padding: 0; 
+    border: none; 
+    width: 100%; /*mismo ancho que el input */
 }
 
 .search-bar-item {
@@ -207,17 +207,17 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-size: 1rem;
     transition: background 0.2s, color 0.2s;
-    background: transparent; /* Fondo transparente por defecto */
-    border: none; /* Sin bordes */
-    margin: 0; /* Elimina márgenes entre elementos */
+    background: transparent; 
+    border: none; 
+    margin: 0; 
     text-align: left;
-    display: flex; /* Asegura que los elementos sean flexibles */
-    align-items: center; /* Centra el contenido verticalmente */
+    display: flex; 
+    align-items: center; 
     cursor: pointer;
 }
 
 .search-bar-item:hover {
-    background: rgba(255, 232, 31, 0.1); /* Fondo al pasar el cursor */
+    background: rgba(255, 232, 31, 0.1);
     color: #ffe81f;
 }
 
