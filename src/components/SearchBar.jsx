@@ -85,16 +85,16 @@ export default function SearchBar() {
         aria-label="Buscar"
       />
       {results.length > 0 && (
-        <ul className="list-group position-absolute w-100 shadow" style={{ zIndex: 10 }}>
+        <ul className="search-bar-dropdown" style={{ zIndex: 10 }}>
           {results.map((res, i) => (
             <li
               key={`${res.category}-${res.uid}`}
-              className={`list-group-item list-group-item-action ${i === activeIdx ? "active" : ""}`}
+              className={`search-bar-item ${i === activeIdx ? "active" : ""}`}
               style={{ cursor: "pointer" }}
               onMouseDown={() => handleSelect(res)}
             >
               <span className="fw-bold">{res.name}</span>
-              <span className="text-muted small ms-2">{res.label}</span>
+              <span className="small ms-2">{res.label}</span>
             </li>
           ))}
         </ul>

@@ -20,7 +20,7 @@ export const NavbarFavoritos = ({ favorites, onRemoveFavorite }) => (
       </button>
       <ul className="dropdown-menu dropdown-menu-end">
         {favorites.length === 0 && (
-          <li><span className="dropdown-item-text text-muted">Sin favoritos</span></li>
+          <li><span className="dropdown-item-text">Sin favoritos</span></li>
         )}
         {favorites.map(fav => {
           const { type, uid } = parseFavUrl(fav.url);

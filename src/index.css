@@ -1,8 +1,82 @@
+html,
+body,
+#root {
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-tabs .nav-link.active {
+    color: #ffe81f ; /* Texto amarillo */
+    background: transparent ; /* Fondo transparente */
+    border: none ; /* Sin bordes */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+}
+.nav-link {
+    color: #ffe81f ;
+    margin: 0 !important;
+    border: none !important;
+}
 body {
     position: relative;
     min-height: 100vh;
     background: #141625;
     overflow-x: hidden;
+}
+
+/* paginacion */
+.pagination .page-link {
+    color: #ffe81f; /* Letras en amarillo */
+    background: transparent; /* Fondo transparente */
+    border: none; /* Sin bordes */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    transition: color 0.2s, background 0.2s;
+}
+
+.pagination .page-link:hover {
+    background: rgba(255, 232, 31, 0.1); /* Fondo al pasar el cursor */
+    color: #ffe81f; /* Mantiene el color amarillo */
+}
+
+.pagination .page-item.active .page-link {
+    background: rgba(255, 232, 31, 0.2); /* Fondo para la página activa */
+    color: #ffe81f; /* Letras en amarillo */
+    border: none; /* Sin bordes */
+}
+
+.card {
+    background: rgba(25, 25, 30, 0.85);
+    border-radius: 1.1em;
+    padding: 1.2em;
+    box-shadow: 0 0 32px 12px #000a;
+    color: azure;
+    width: 70%;
+    /* Asegura que la tarjeta ocupe todo el ancho de la columna */
+    max-width: 100%;
+    /* Elimina cualquier límite de ancho */
+    word-break: break-word;
+    white-space: pre-line;
+    z-index: 9;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.8em;
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .card {
+        margin-bottom: 1em;
+    }
 }
 
 /* Star Background */
@@ -22,10 +96,12 @@ body {
         opacity: 0;
         filter: blur(6px);
     }
+
     40% {
         opacity: 1;
         filter: blur(0);
     }
+
     100% {
         opacity: 1;
         filter: blur(0);
@@ -37,6 +113,7 @@ body {
         transform: scaleX(0);
         opacity: 0.3;
     }
+
     to {
         transform: scaleX(1);
         opacity: 1;
@@ -108,6 +185,40 @@ body {
 .search-bar-space:focus {
     border: 2px solid #ffe81f;
     box-shadow: 0 0 44px 6px #ffe81faa;
+}
+
+.search-bar-dropdown {
+    position: absolute; /* Posiciona el dropdown fuera del flujo normal */
+    top: 100%; /* Coloca el dropdown justo debajo del input */
+    left: 0; /* Alinea el dropdown con el lado izquierdo del input */
+    z-index: 1050; /* Asegura que el dropdown esté por encima de otros elementos */
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(25, 25, 30, 0.85); /* Fondo uniforme */
+    border-radius: 1.1em; /* Bordes redondeados */
+    padding: 0; /* Elimina el padding interno */
+    border: none; /* Sin bordes */
+    width: 100%; /* Asegura que el dropdown tenga el mismo ancho que el input */
+}
+
+.search-bar-item {
+    color: #ffe81f;
+    padding: 0.5em 1.2em;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+    background: transparent; /* Fondo transparente por defecto */
+    border: none; /* Sin bordes */
+    margin: 0; /* Elimina márgenes entre elementos */
+    text-align: left;
+    display: flex; /* Asegura que los elementos sean flexibles */
+    align-items: center; /* Centra el contenido verticalmente */
+    cursor: pointer;
+}
+
+.search-bar-item:hover {
+    background: rgba(255, 232, 31, 0.1); /* Fondo al pasar el cursor */
+    color: #ffe81f;
 }
 
 /* Footer */
@@ -233,6 +344,22 @@ body {
 .dropdown-menu {
     max-height: 300px;
     overflow-y: auto;
+    background: rgba(25, 25, 30, 0.85);
+    border-radius: 1.1em;
+}
+
+.dropdown-item,
+.dropdown-item-text {
+    color: #ffe81f;
+    padding: 0.5em 1.2em;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 232, 31, 0.1);
+    color: #ffe81f;
 }
 
 /* Responsive */

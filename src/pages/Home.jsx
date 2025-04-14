@@ -1,81 +1,75 @@
 import React, { useState } from 'react';
-import { Container, Spinner } from 'react-bootstrap';
-import { useAllCategoryItems } from '../hooks/useAllCategoryItems';
+import { useOutletContext } from 'react-router-dom';
 import useGlobalReducer from '../hooks/useGlobalReducer';
-import { ACTIONS } from '../store';
+import { getImageUrl, getDetailsURL, getApiUrl } from '../hooks/helpers';
 import ItemCard from '../components/ItemCard';
-import { getType, getApiUrl, getDetailsURL, getImageUrl } from '../hooks/helpers'; // Ajusta la ruta según tu estructura
 
 const TABS = [
   { key: 'people', label: 'Personajes' },
   { key: 'planets', label: 'Planetas' },
-  { key: 'vehicles', label: 'Vehículos' }
+  { key: 'vehicles', label: 'Vehículos' },
 ];
 
 const itemsPerPage = 9;
 
 const Home = () => {
   const { store, dispatch } = useGlobalReducer();
+  const { onTrigger } = useOutletContext(); // Obtiene la función onTrigger desde Layout
   const [activeTab, setActiveTab] = useState('people');
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { items, loading } = useAllCategoryItems(activeTab);
-
+  const items = store[activeTab] || [];
   const pageCount = Math.ceil(items.length / itemsPerPage);
   const currentItems = items.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Maneja el evento de agregar o quitar de favoritos
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setCurrentPage(1); // Reinicia la paginación al cambiar de tab
+    onTrigger(); // Notifica al Layout que debe actualizar el trigger
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    onTrigger(); // Notifica al Layout que debe actualizar el trigger
+  };
+
   const handleFav = (item) => {
     const favItem = {
       uid: item.uid,
       name: item.properties?.name ?? item.name,
-      url: getApiUrl(activeTab, item.uid)
+      url: getApiUrl(activeTab, item.uid),
     };
-    dispatch({ type: ACTIONS.TOGGLE_FAVORITE, payload: favItem });
+    dispatch({ type: 'TOGGLE_FAVORITE', payload: favItem });
   };
-
-  // Cambia de tab y reinicia la página actual
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-    setCurrentPage(1);
-  };
-
-  if (loading) {
-    return (
-      <Container className="d-flex justify-content-center align-items-center vh-100">
-        <Spinner animation="border" role="status" />
-      </Container>
-    );
-  }
 
   return (
-    <Container>
-      {/* Tabs para cambiar entre categorías */}
+    <div>
+      {/* Tabs */}
       <ul className="nav nav-tabs mb-3">
         {TABS.map(({ key, label }) => (
           <li key={key} className="nav-item">
             <button
               className={`nav-link ${activeTab === key ? 'active' : ''}`}
               onClick={() => handleTabChange(key)}
-              aria-label={`Cambiar a la categoría ${label}`}
             >
-              {label} ({store.favorites.filter(f => getType(f.url) === key).length})
+              {label} ({store.favorites.filter((f) => f.url.includes(key)).length})
             </button>
           </li>
         ))}
       </ul>
 
-      {/* Cards */}
-      <div className="row">
-        {currentItems.map(item => {
-          const apiUrl = getApiUrl(activeTab, item.uid);
-          const isFavorite = store.favorites.some(f => f.url === apiUrl);
+      {/* Items */}
+      <div className="row justify-content-center g-3 mx-0">
+        {currentItems.map((item) => {
+          const isFavorite = store.favorites.some(
+            (f) => f.url === getApiUrl(activeTab, item.uid)
+          );
 
           return (
-            <div className="col-md-4 mb-4" key={item.uid}>
+            <div className="col-md-4 d-flex justify-content-center mb-3" key={item.uid}>
               <ItemCard
                 name={item.properties?.name ?? item.name}
                 imageUrl={getImageUrl(activeTab, item.uid)}
@@ -98,7 +92,7 @@ const Home = () => {
                 className={`page-item ${currentPage === idx + 1 ? 'active' : ''}`}
               >
                 <button
-                  onClick={() => setCurrentPage(idx + 1)}
+                  onClick={() => handlePageChange(idx + 1)}
                   className="page-link"
                 >
                   {idx + 1}
@@ -108,7 +102,7 @@ const Home = () => {
           </ul>
         </nav>
       )}
-    </Container>
+    </div>
   );
 };
 
