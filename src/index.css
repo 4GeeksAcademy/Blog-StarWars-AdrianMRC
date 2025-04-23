@@ -79,7 +79,7 @@ body {
     }
 }
 
-/* Star Background */
+/* Campo de estrellas */
 #star-background {
     pointer-events: none;
     position: fixed;
@@ -90,7 +90,7 @@ body {
     height: 100vh;
 }
 
-/* Animations */
+/* Animaciones */
 @keyframes star-fade {
     0% {
         opacity: 0;
@@ -120,7 +120,7 @@ body {
     }
 }
 
-/* Detail Image */
+/* Imagen en detalles */
 .detail-img-sw {
     display: block;
     max-width: 340px;
@@ -146,7 +146,7 @@ body {
     top: 35%;
 }
 
-/* Detail Box */
+/* Contenedor de detalles */
 .detail-box {
     background: rgba(25, 25, 30, 0.85);
     border-radius: 1.1em;
@@ -168,7 +168,7 @@ body {
     justify-content: center;
 }
 
-/* Search Bar */
+/* Barra de busqueda */
 .search-bar-space {
     background: rgba(25, 25, 40, 0.96);
     border-radius: 50px;
@@ -235,7 +235,7 @@ body {
     margin-top: 20px;
 }
 
-/* Lightsaber */
+/* Sable Laser */
 .sable-lightsaber-row {
     display: flex;
     align-items: center;
@@ -340,7 +340,7 @@ body {
     vertical-align: middle;
 }
 
-/* Dropdown */
+/* Dropdown, desplegable */
 .dropdown-menu {
     max-height: 300px;
     overflow-y: auto;

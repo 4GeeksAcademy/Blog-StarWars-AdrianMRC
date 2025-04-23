@@ -6,10 +6,8 @@ import { storeReducer, initialStore } from "../store"; // Importa desde tu store
 // Contexto global que ayudará a proveer y consumir el store
 const StoreContext = createContext();
 
-/**
- * Provider global de la store (wrapppea tu App).
- * Usado en: main.jsx o App.jsx
- */
+
+//Provider global de la store (wrapppea tu App).
 export function StoreProvider({ children }) {
   // Inicializa el reducer con el estado inicial
   const [store, dispatch] = useReducer(storeReducer, initialStore);
@@ -21,14 +19,13 @@ export function StoreProvider({ children }) {
   );
 }
 
-/**
- * Hook para acceder rápido al store global y dispatch.
- * Usado en: Home.jsx, Details.jsx, NavbarFavoritos.jsx, etc.
- */
+
+//Hook para acceder rápido al store global y dispatch.
+
 export default function useGlobalReducer() {
   const context = useContext(StoreContext);
   if (!context) {
     throw new Error("useGlobalReducer must be used within a StoreProvider");
   }
-  return context; // { store, dispatch }
+  return context;
 }

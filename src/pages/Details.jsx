@@ -4,9 +4,8 @@ import { getImageUrl, getApiUrl, getDetailsURL } from '../hooks/helpers';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import DetailImage from '../components/DetailImage';
 
-/**
- * Muestra el detalle de un ítem (persona, planeta o vehículo) de SW.
- */
+
+//Muestra el detalle de un ítem (persona, planeta o vehículo) de SW.
 const Details = () => {
     const { type, uid } = useParams();
     const { store, dispatch } = useGlobalReducer();

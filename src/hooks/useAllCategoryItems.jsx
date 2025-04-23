@@ -1,9 +1,7 @@
 import useGlobalReducer from './useGlobalReducer';
 
-/**
- * Se utiliza para obtenerlos desde la API y almacenarlos en el localStorage para futuras consultas
- * Esta función NO es un hook.
- */
+
+//Se utiliza para obtenerlos desde la API y almacenarlos en el localStorage para futuras consultas, esta función NO es un hook.
 export async function fetchAllExpanded(category) {
   if (!category) {
     throw new Error("La categoría es requerida para fetchAllExpanded.");
@@ -41,9 +39,9 @@ export async function fetchAllExpanded(category) {
   return all;
 }
 
-/**
- * Hook React para acceder a la lista de items de la categoría global, y su estado de carga.
- */
+
+//Hook React para acceder a la lista de items de la categoría global, y su estado de carga.
+ 
 export function useAllCategoryItems(category) {
   if (!category) {
     throw new Error("La categoría es requerida para useAllCategoryItems.");

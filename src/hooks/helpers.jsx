@@ -40,8 +40,8 @@ export function getDetailsURL(category, uid) {
 
 // Parsea una URL de favorito para extraer su tipo y ID
 export function parseFavUrl(url) {
-    const type = extractType(url); // Reutiliza `extractType` para obtener el tipo
-    const uid = getIdFromUrl(url); // Reutiliza `getIdFromUrl` para obtener el ID
+    const type = extractType(url); 
+    const uid = getIdFromUrl(url); 
     return { type, uid };
 }
 
