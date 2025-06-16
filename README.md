@@ -1,73 +1,107 @@
-# WebApp Template with React JS
+# 🌌 Star Wars Blog - React + Custom Hooks
+
+This project was created as part of the **4Geeks Academy** bootcamp. It is a blog-style application that lists and displays details of various elements from the **Star Wars** universe (characters, planets, vehicles, etc.).
+
+The app fetches data from an API and allows users to:
+
+- View items by category on the homepage.
+- Click on an item to see detailed information.
+- Use a smart search bar to filter through elements.
+- Navigate smoothly thanks to React Router.
+- Enjoy a themed experience with SVG images, animated star backgrounds, and responsive design.
+
+Global state is managed using **useReducer** and the **Context API**, wrapped inside custom hooks like `useGlobalReducer`. Data is fetched asynchronously with hooks like `useLoadData` and `useAllCategoryItems`.
+
+---
 
 
-Used by 4Geeks.com and 4Geeks Academy students, this template helps to bootstrap your first multi-page web applications by integrating with React latest version, vercel deployments and [Vite](https://4geeks.com/lesson/intro-to-vite-module-bundler) for bundling.
+## 🧑‍🏫 Developed by
 
-### Getting stated:
+**Adrián MRC**  
+Project created during the Full Stack Developer Bootcamp at 4Geeks Academy.
 
-> 📦 Make sure you are using at least node version 20.
+---
 
-1. Install the node package dependencies by typing: `$ npm install`
+## 🛠️ Technologies Used
 
-2. Create a .env file by typing `$ cp .env.example .env`
+- [React](https://reactjs.org/) (latest version)
+- [Vite](https://vitejs.dev/) (fast bundler and dev server)
+- [React Router](https://reactrouter.com/) (for routing and navigation)
+- Custom Hooks (`useLoadData`, `useGlobalReducer`, etc.)
+- [Vercel](https://vercel.com/) (for deployment)
 
-3. Start coding! and the vite dev server with live reload by typing: `$ npm run start`
+---
 
+## 🚀 How to Run Locally
 
-### Styling
+1. **Clone the repository:**
 
-You can update the `./index.css` or create new `.css` files and import them into your current css or js files depending on your needs.
+   ```bash
+   git clone https://github.com/4GeeksAcademy/Blog-StarWars-AdrianMRC.git
+   cd Blog-StarWars-AdrianMRC
+   ```
 
-### Components
+2. **Ensure you have Node.js v20 or higher installed.**
 
-Add more files into your `./src/components` or styles folder as you need them and import them into your current files as needed.
+3. **Install the dependencies:**
 
-💡Note: There is an example using the Context API inside `pages/demo.js`;
+   ```bash
+   npm install
+   ```
 
-### Pages
+4. **Run the development server:**
 
-Add more files into your `./js/pages` and import them in `./routes.jsx`.
-Each page must match at least one route inside `routes.jsx`
+   ```bash
+   npm run dev
+   ```
 
-### Centralized Store with useReducer
+   Access the app at `http://localhost:3000`.
 
-This template comes with a centralized & general state that's shared with all pages and compoentes, we call it "the store".   
+---
 
-The file `./src/store.js` has a default structure for the store, we encourage you to change it and adapt it to your data needs (for example, if you are doing a `Todo list` you will probably have a array of todos here).
+## 🗂️ Project Structure
 
-+ Learn [how the useReducer works](https://4geeks.com/lesson/optimize-react-components-usereducer).
-+ Read more about [implementing a global state with Context API](https://4geeks.com/lesson/context-api)
-+ Read more about [react hooks](https://content.breatheco.de/lesson/react-hooks-explained)
-
-The store `Provider` for this context is already set on `./src/main.jsx`. You can access the store from any component using the `useGlobalReducer` hook to get the `store` and `dispatcher`. Check `/views/demo.js` to see a demo. Here is a smaller sample:
-
-```jsx
-import useGlobalReducer from "./src/hooks/useGlobalReducer";
-
-const MyComponentSuper = () => {
-  //here you use the hook to get dispatcher and store
-  import { dispatch, store } = useGlobalReducer();
-
-  return <div>{/* you can use your actions or store inside the html */}</div>
-}
+```
+src/
+├── App.jsx                    # Root app component
+├── assets/img/                # Image assets
+├── components/                # UI components
+├── hooks/                     # Custom hooks
+├── pages/                     # Main views
+├── routes.jsx                 # React Router configuration
+├── store.js                   # Global state with useReducer
+├── main.jsx                   # Entry point
+└── index.css                  # Global styles
 ```
 
-## Publish your website!
+---
 
-1. **Vercel:** The FREE recomended hosting provider is [vercel.com](https://vercel.com/), you can deploy in 1 minutes by typing the following 2 commands:
+## 🌐 Deployment with Vercel
 
-Login (you need to have an account):
-```sh
-$ npm i vercel -g && vercel login
-```
-Deploy:
-```sh
-$ vercel --prod
-```
-✎ Note: If you don't have an account just go to vercel.com, create a account and come back here.
+1. Install the CLI and log in:
 
-![Vercel example procedure to deploy](https://github.com/4GeeksAcademy/react-hello-webapp/blob/4b530ba091a981d3916cc6e960e370decaf2e234/docs/deploy.png?raw=true)
+   ```bash
+   npm i -g vercel
+   vercel login
+   ```
 
-## Contributors
+2. Deploy the app:
 
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) and [CyberSecurity Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/cybersecurity).
+   ```bash
+   vercel --prod
+   ```
+
+---
+
+## 🧠 Useful Resources
+
+- [React Docs](https://reactjs.org/)
+- [Vite Docs](https://vitejs.dev/guide/)
+- [React Router](https://reactrouter.com/)
+- [Vercel Docs](https://vercel.com/docs)
+
+---
+
+## 📝 License
+
+This project is licensed under the **MIT License**. Feel free to use, modify, and share it.

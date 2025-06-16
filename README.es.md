@@ -1,73 +1,107 @@
-# Plantilla WebApp con React JS
+# 🌌 Blog Star Wars - React + Custom Hooks
 
-> 🎥 Esta plantilla [cuenta con un video tutorial](https://youtu.be/9blWKQTJ1FA), para verlo haz clic aquí.
+Este es un proyecto realizado como parte del bootcamp de **4Geeks Academy**. Es una aplicación tipo blog donde se listan y detallan distintos elementos del universo de **Star Wars** (personajes, planetas, vehículos, etc.).
 
-Utilizada por [4Geeks.com](https://4geeks.com/) y los estudiantes de [4Geeks Academy](https://4geeksacademy.com/), esta plantilla ayuda a iniciar tus primeras aplicaciones web multi-página integrándose con la última versión de React, React-Router, despliegues en Vercel y [Vite](https://4geeks.com/es/lesson/introduccion-a-vite-como-empaquetador-de-modulos) para el empaquetado.
+La app consume datos desde una API y permite al usuario:
 
-### Empezando:
+- Visualizar ítems organizados por categoría en la página principal.
+- Hacer clic sobre un ítem para ver su detalle completo.
+- Buscar elementos a través de una barra de búsqueda inteligente.
+- Navegar fluidamente gracias a React Router.
+- Disfrutar de una experiencia visual temática con imágenes SVG, fondo animado de estrellas y diseño responsive.
 
-> 📦 Asegúrate de usar al menos la versión 20 de Node.
+El estado global se maneja con **useReducer** y **Context API**, encapsulado en hooks personalizados como `useGlobalReducer`. Los datos se cargan de forma asincrónica con hooks como `useLoadData` y `useAllCategoryItems`.
 
-1. Instala las dependencias del paquete node escribiendo: `$ npm install`
+---
 
-2. Crea un archivo .env basado en el .env.example escribiendo `$ cp .env.example .env`
 
-3. ¡Comienza a programar! y el servidor de desarrollo de vite con recarga en vivo escribiendo: `$ npm run start`
+## 🧑‍🏫 Desarrollado por
 
-### Estilos
+**Adrián MRC**  
+Proyecto del curso Full Stack Developer en 4Geeks Academy.
 
-Puedes actualizar el archivo `./index.css` o crear nuevos archivos `.css` e importarlos en tus archivos css o js actuales según tus necesidades.
+---
 
-### Componentes
+## 🛠️ Tecnologías utilizadas
 
-Agrega más archivos en tu carpeta `./src/components` según los necesites e impórtalos en tus paginas actuales según sea necesario.
+- [React](https://reactjs.org/) (última versión)
+- [Vite](https://vitejs.dev/) (empaquetador y servidor de desarrollo)
+- [React Router](https://reactrouter.com/) (para navegación entre páginas)
+- [Custom Hooks](https://reactjs.org/docs/hooks-custom.html) (`useLoadData`, `useGlobalReducer`, etc.)
+- [Vercel](https://vercel.com/) (despliegue gratuito)
 
-### Páginas
+---
 
-Agrega más archivos en tu carpeta `./js/pages` e impórtalos en `./routes.jsx`.
-Cada página debe coincidir con al menos una ruta dentro de `routes.jsx`
+## 🚀 Cómo ejecutar el proyecto localmente
 
-### Almacenamiento Centralizado con useReducer
+1. **Clona el repositorio:**
 
-Esta plantilla viene con un estado general y centralizado que se comparte con todas las páginas y componentes, lo llamamos "store".
+   ```bash
+   git clone https://github.com/4GeeksAcademy/Blog-StarWars-AdrianMRC.git
+   cd Blog-StarWars-AdrianMRC
+   ```
 
-El archivo `./src/store.js` tiene una estructura predeterminada para el store, te animamos a cambiarla y adaptarla a tus necesidades de datos (por ejemplo, si estás haciendo una `Lista de tareas` probablemente tendrás un arreglo de tareas aquí).
+2. **Asegúrate de tener Node.js v20 o superior.**
 
-💡Nota: Hay un ejemplo usando el store y dispatcher de useReducer en el archivo `pages/demo.js`;
+3. **Instala las dependencias:**
 
-+ Entiende [como funciona el `useReducer`](https://4geeks.com/es/lesson/que-es-usereducer-react)
-+ Lee más sobre [implementar un estado global con API de Contexto](https://4geeks.com/es/lesson/context-api-es)
-+ Lee más sobre [hooks de react](https://4geeks.com/es/lesson/react-hooks-explained-es)
+   ```bash
+   npm install
+   ```
 
-El `Proveedor` del store para este contexto ya está configurado en `./src/main.jsx`. Puedes acceder al store desde cualquier componente usando el hook `useGlobalReducer` para obtener el `store` y el `despachador`. Consulta `/views/demo.js` para ver una demostración. Aquí tienes un ejemplo más pequeño:
+4. **Inicia el servidor de desarrollo:**
 
-```jsx
-import useGlobalReducer from "./src/hooks/useGlobalReducer";
+   ```bash
+   npm run dev
+   ```
 
-const MyComponentSuper = () => {
-  //aquí usas el hook para obtener el despachador y el almacén
-  import { dispatch, store } = useGlobalReducer();
+   Accede en `http://localhost:3000`.
 
-  return <div>{/* puedes usar tus acciones o el almacén dentro del html */}</div>
-}
+---
+
+## 🗂️ Estructura del Proyecto
+
+```
+src/
+├── App.jsx                    # Componente raíz
+├── assets/img/                # Recursos gráficos
+├── components/                # Componentes reutilizables
+├── hooks/                     # Hooks personalizados
+├── pages/                     # Páginas principales
+├── routes.jsx                 # Rutas de la app
+├── store.js                   # Estado global con useReducer
+├── main.jsx                   # Punto de entrada
+└── index.css                  # Estilos globales
 ```
 
-## ¡Publica tu sitio web!
+---
 
-1. **Vercel:** El proveedor de alojamiento GRATUITO recomendado es [vercel.com](https://vercel.com/), puedes desplegar en 1 minuto escribiendo los siguientes 2 comandos:
+## 🌐 Despliegue en Vercel
 
-Iniciar sesión (necesitas tener una cuenta):
-```sh
-$ npm i vercel -g && vercel login
-```
-Desplegar:
-```sh
-$ vercel --prod
-```
-✎ Nota: Si no tienes una cuenta, simplemente ve a vercel.com, crea una cuenta y regresa aquí.
+1. Instala Vercel CLI y haz login:
 
-![Procedimiento de ejemplo de Vercel para desplegar](https://github.com/4GeeksAcademy/react-hello-webapp/blob/4b530ba091a981d3916cc6e960e370decaf2e234/docs/deploy.png?raw=true)
+   ```bash
+   npm i -g vercel
+   vercel login
+   ```
 
-## Contribuidores
+2. Despliega:
 
-Esta plantilla fue construida como parte del [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) de 4Geeks Academy por [Alejandro Sanchez](https://twitter.com/alesanchezr) y muchos otros contribuidores. Descubre más sobre nuestro [Curso de Desarrollador Full Stack](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), [Curso de data-science](https://4geeksacademy.com/es/coding-bootcamps/curso-datascience-machine-learning) y [Curso de Ciberseguridad](https://4geeksacademy.com/es/coding-bootcamps/curso-ciberseguridad).
+   ```bash
+   vercel --prod
+   ```
+
+---
+
+## 🧠 Recursos útiles
+
+- [React Docs](https://reactjs.org/)
+- [Vite Docs](https://vitejs.dev/guide/)
+- [React Router](https://reactrouter.com/)
+- [Vercel Docs](https://vercel.com/docs)
+
+---
+
+## 📝 Licencia
+
+Proyecto bajo la licencia MIT. Puedes usarlo, modificarlo y distribuirlo libremente.
